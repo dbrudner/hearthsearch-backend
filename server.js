@@ -13,14 +13,17 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-var cors = require ('cors')
-
-app.use(cors())
-
 
 // configuration ===============================================================
-mongoose.connect("mongodb://localhost/hearthSearch", {
-});
+
+var developmentUrl = "mongodb://localhost/hearthsearch"
+
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI)
+} else {
+    mongoose.connect(developmentUrl)
+}
+
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
