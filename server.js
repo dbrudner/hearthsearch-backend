@@ -19,7 +19,7 @@ app.use(cors())
 
 
 // configuration ===============================================================
-mongoose.connect("mongodb://localhost/hearthsearch", {
+mongoose.connect("mongodb://localhost/hearthSearch", {
 });
 require('./config/passport')(passport); // pass passport for configuration
 
